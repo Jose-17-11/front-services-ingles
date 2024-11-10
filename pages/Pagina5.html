@@ -128,56 +128,70 @@
     </header>
 
     <!-- Lista de usuarios -->
-    <main class="contenido">
-        <div class="caja" style="background-color: #1CB0F6;">
-            <img src="../assets/avatar3.png" alt="Trofeo">
-            <div>
-                <h2> Bonifacio
-                <img src="../assets/coronazul.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
-            </h2>
-                <p>Activo/a ahora!</p>
-            </div>
-            <a href="clasificacion.html" class="boton">DESAFIAR</a>
-        </div>
-	
-        <div class="caja" style="background-color: #CE82FF;">
-            <img src="../assets/avatar6.png" alt="Trofeo">
-            <div>
-                <h2> Alfredo
-                <img src="../assets/coronamor.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
-            </h2>
-                <p>Activo/a ahora!</p>
-            </div>
-            <a href="clasificacion.html" class="boton">DESAFIAR</a>
-        </div>
-
-        <div class="caja" style="background-color: #E2C455;">
-            <img src="../assets/avatar4.png" alt="Trofeo">
-            <div>
-                <h2> Sigma Chad
-                <img src="../assets/coronaroj.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
-            </h2>
-                <p>Activo/a ahora!</p>
-            </div>
-            <a href="clasificacion.html" class="boton">DESAFIAR</a>
-        </div>
-
-        <div class="caja" style="background-color: #FF4B4B;">
-            <img src="../assets/avatar2.png" alt="Trofeo">
-            <div>
-                <h2> Skibidi Toilet
-                <img src="../assets/coronamar.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
-            </h2>
-                <p>Activo/a hace 5 minutos!</p>
-            </div>
-            <a href="clasificacion.html" class="boton">DESAFIAR</a>
-        </div>
+    <main class="contenido" id="cards-container" >
     </main>
 
     <!-- Botón de jugar -->
     <footer>
         
     </footer>
+    <script>
+        let colors = ['#1CB0F6', '#CE82FF', '#E2C455', '#FF4B4B']
+        let images = ['coronazul.png', 'coronamor.png', 'coronaroj.png', 'coronamar.png']
+        document.addEventListener('DOMContentLoaded', () => {
+            getUsers();
+        });
 
+        // Obtiene el total de usuarios en linea para pintarlos dentro del apartado donde se muestran
+        async function getUsers() {
+            const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage (o cookies)
+            if (token) {
+                const response = await fetch('http://localhost:3000/users-total', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    const users = await response.json();
+                    console.log(users);
+                    // Obtener el contenedor donde se agregarán las tarjetas
+                const cardsContainer = document.getElementById('cards-container');
+                let colorIndex = 0; // Índice para cambiar de color en el array
+                let imgIndex = 0;
+                // Iterar sobre los usuarios y agregar una tarjeta para cada uno
+                users.forEach((user, index) => {
+                    // Crear la tarjeta
+                    const card = document.createElement('div');
+                    card.classList.add('caja');
+                    card.style.backgroundColor = colors[colorIndex]; // Asignar el color de fondo
+
+                    // Insertar el contenido dentro de la tarjeta
+                    card.innerHTML = `
+                        <img src="../assets/avatar3.png" alt="Trofeo">
+                        <div>
+                            <h2 class="name">${user.nombre}
+                                <img src="../assets/${images[imgIndex]}" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
+                            </h2>
+                            <p>Activo/a ahora!</p>
+                        </div>
+                        <a href="clasificacion.html" class="boton">DESAFIAR</a>
+                    `;
+
+                    // Agregar la tarjeta al contenedor
+                    cardsContainer.appendChild(card);
+
+                    // Incrementar el índice de color y reiniciar cuando se alcance el final del array de colores
+                    colorIndex = (colorIndex + 1) % colors.length;
+                    imgIndex = (imgIndex + 1) % images.length;
+                });
+                    
+                } else {
+                    console.error('Error al obtener usuarios');
+                }
+            } 
+        }
+    </script>
 </body>
 </html>

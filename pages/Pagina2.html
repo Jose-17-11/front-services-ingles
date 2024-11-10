@@ -160,7 +160,8 @@
                 });
                 if (response.ok) {
                     const users = await response.json();
-                    document.querySelector('.number').textContent = users.total_activos;
+                    const totalActivos = users.length;
+                    document.querySelector('.number').textContent = totalActivos;
                 } else {
                     console.error('Error al obtener usuarios');
                 }
