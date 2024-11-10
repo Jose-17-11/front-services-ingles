@@ -24,34 +24,43 @@
                 if (response.ok) {
                     const users = await response.json();
                     displayRanking(users);
+                    displayRankingEleven(users);
                 } else {
                     console.error('Error al obtener usuarios');
                     window.location.href = "Pagina1.html";
                 }
             } 
         }
-
+        
         function displayRanking(users) {
             // Ordenar los usuarios por 'nivel_mas_alto' de mayor a menor
             users.sort((a, b) => b.nivel_mas_alto - a.nivel_mas_alto);
-
             // Tomar los tres primeros usuarios
             const topThree = users.slice(0, 3);
-
             // Actualizar el HTML con los datos
             const rankingItems = document.querySelectorAll('.ranking-item');
-            
             topThree.forEach((user, index) => {
                 const rankingItem = rankingItems[index];
-                
                 // Actualizar nombre
                 rankingItem.querySelector('.name').textContent = user.nombre;
-                
                 // Actualizar nivel más alto
                 rankingItem.querySelector('.point').textContent = user.nivel_mas_alto;
+            });
+        }
 
-                // Puedes personalizar los trofeos si los deseas mostrar basados en la posición
-                // Por ejemplo, si deseas añadir un trofeo específico, ya tienes las imágenes en el HTML
+        function displayRankingEleven(users) {
+            // Ordenar los usuarios por 'nivel_mas_alto' de mayor a menor
+            users.sort((a, b) => b.nivel_mas_alto - a.nivel_mas_alto);
+            // Tomar los tres primeros usuarios
+            const topThree = users.slice(3, 10);
+            // Actualizar el HTML con los datos
+            const rankingItems = document.querySelectorAll('.ranking-list-item');
+            topThree.forEach((user, index) => {
+                const rankingItem = rankingItems[index];
+                // Actualizar nombre
+                rankingItem.querySelector('.name').textContent = user.nombre;
+                // Actualizar nivel más alto
+                rankingItem.querySelector('.point').textContent = user.nivel_mas_alto;
             });
         }
     </script>
@@ -242,55 +251,55 @@
 
         <!-- Lista de otros puestos -->
         <ul class="ranking-list">
-            <li>
+            <li class="ranking-list-item" >
                 <span class="position">4.</span>
                 <img src="../assets/avatar4.png" alt="Avatar puesto 4">
-                <span>Bonifacio </span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">230</span>
+                <span class="position point"></span>
             </li>
-            <li>
+            <li class="ranking-list-item" >
                 <span class="position">5.</span>
                 <img src="../assets/avatar5.png" alt="Avatar puesto 5">
-                <span>Alfredo</span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">220</span>
+                <span class="position point"></span>
             </li>
-            <li>
+            <li class="ranking-list-item" >
                 <span class="position">6.</span>
                 <img src="../assets/avatar6.png" alt="Avatar puesto 6">
-                <span>Sigma Chad</span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">217</span>
+                <span class="position point"></span>
             </li>
-	        <li>
+	        <li class="ranking-list-item" >
                 <span class="position">7.</span>
                 <img src="../assets/avatar4.png" alt="Avatar puesto 7">
-                <span>Sigma Chad</span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">211</span>
+                <span class="position point"></span>
             </li>
             
-            <li>
+            <li class="ranking-list-item" >
                 <span class="position">8.</span>
                 <img src="../assets/avatar5.png" alt="Avatar puesto 5">
-                <span>Alfredo</span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">220</span>
+                <span class="position point"></span>
             </li>
-            <li>
+            <li class="ranking-list-item" >
                 <span class="position">9.</span>
                 <img src="../assets/avatar6.png" alt="Avatar puesto 6">
-                <span>Sigma Chad</span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">217</span>
+                <span class="position point"></span>
             </li>
-	        <li>
+	        <li class="ranking-list-item" >
                 <span class="position">10.</span>
                 <img src="../assets/avatar4.png" alt="Avatar puesto 7">
-                <span>Sigma Chad</span>
+                <span class="name"></span>
 		        <span class="position"></span>
-                <span class="position">211</span>
+                <span class="position point"></span>
             </li>
         </ul>
     </div>
