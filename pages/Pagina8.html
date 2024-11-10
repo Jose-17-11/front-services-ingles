@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Piensa Rápido!</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #EAEBD9;
+        }
+
+        /* Estilo del menú superior */
+        .header {
+            background-color: #1E3A5F;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Contenido principal */
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 18px;
+            margin: 10px 0 20px;
+        }
+        .questions {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        .questions p {
+            margin: 15px 0;
+        }
+
+        /* Estilo para espacios de arrastre */
+        .dropzone {
+            display: inline-block;
+            border-bottom: 2px solid #333;
+            min-width: 50px;
+            padding: 5px;
+            margin-left: 5px;
+            text-align: center;
+            height: 25px;
+        }
+
+        /* Botones de opciones */
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .options .draggable {
+            background-color: #1E3A5F;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .options .draggable:hover {
+            background-color: #3A5E8C;
+        }
+
+        /* Botón de validar */
+        .validate-button {
+            margin-top: 20px;
+            background-color: #1E3A5F;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .validate-button:hover {
+            background-color: #3A5E8C;
+        }
+
+        /* Estilos para el cuadro de confirmación */
+        .confirm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .confirm-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 300px;
+        }
+        .confirm-box p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .confirm-box button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .confirm-box .confirm-yes {
+            background-color: #1E3A5F;
+            color: white;
+        }
+        .confirm-box .confirm-no {
+            background-color: #ddd;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <div class="header">
+        <button onclick="confirmExit('Pagina2.html')">⬅</button>
+        <h1>¡Piensa Rápido!</h1>
+        <button onclick="confirmExit('Pagina3-8.html')">👤</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h2>Completa la oración</h2>
+        <div class="questions">
+            <p>1. Hi, I'm Roxana.<span class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="Who">____</span> are you?</p>
+            <p>2. Nice to meet you Roxana, I'm Leo.<br>I'm from Mexico.<span class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="Where">____</span> are you from?</p>
+            <p>3. I'm from Canada.<span class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="When">____</span> did you arrive?</p>
+            <p>4. I arrived last night<span class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="X">____</span> in the middle of the night.</p>
+            <p>5. At middle of the night!!<span class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="Why">____</span> did you arrive so late?</p>
+            <p>6. Because I<span class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)" data-answer="X">____</span> lost my ticket.</p>
+        </div>
+
+        <!-- Opciones de respuesta -->
+        <div class="options">
+            <button class="draggable" draggable="true" ondragstart="drag(event)" id="when">When</button>
+            <button class="draggable" draggable="true" ondragstart="drag(event)" id="why">Why</button>
+            <button class="draggable" draggable="true" ondragstart="drag(event)" id="x">X</button>
+            <button class="draggable" draggable="true" ondragstart="drag(event)" id="x">X</button>
+            <button class="draggable" draggable="true" ondragstart="drag(event)" id="where">Where</button>
+            <button class="draggable" draggable="true" ondragstart="drag(event)" id="who">Who</button>
+        </div>
+
+        <!-- Botón de validar -->
+        <button class="validate-button" onclick="validateAnswers()">Validar respuestas</button>
+
+        <!-- Mensaje de validación -->
+        <div class="validation-message" id="validationMessage"></div>
+    </div>
+
+    <!-- Cuadro de confirmación -->
+    <div class="confirm-overlay" id="confirmOverlay">
+        <div class="confirm-box">
+            <p>¿Realmente quieres abandonar la partida actual?</p>
+            <button class="confirm-yes" onclick="exitPage()">Sí</button>
+            <button class="confirm-no" onclick="closeConfirm()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let exitUrl = "";
+
+        function confirmExit(url) {
+            exitUrl = url;
+            document.getElementById("confirmOverlay").style.display = "flex";
+        }
+
+        function closeConfirm() {
+            document.getElementById("confirmOverlay").style.display = "none";
+        }
+
+        function exitPage() {
+            window.location.href = exitUrl;
+        }
+
+        // Permite el arrastre
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        // Maneja el inicio del arrastre
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        // Maneja el evento de soltar
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            if (ev.target.firstChild) {
+                ev.target.removeChild(ev.target.firstChild);
+            }
+            ev.target.appendChild(draggedElement);
+            ev.target.setAttribute("data-user-answer", data);
+        }
+
+        function validateAnswers() {
+            const dropzones = document.querySelectorAll(".dropzone");
+            let correctAnswers = 0;
+
+            dropzones.forEach(dropzone => {
+                const correctAnswer = dropzone.getAttribute("data-answer");
+                const userAnswer = dropzone.getAttribute("data-user-answer");
+
+                if (userAnswer && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    correctAnswers++;
+                }
+            });
+
+            const messageDiv = document.getElementById("validationMessage");
+            if (correctAnswers === dropzones.length) {
+                messageDiv.innerHTML = "¡Correcto! Redirigiendo en 5 segundos...";
+                setTimeout(() => {
+                    window.location.href = "Pagina11.html";
+                }, 5000);
+            } else {
+                messageDiv.innerHTML = "Algunas respuestas son incorrectas. Inténtalo de nuevo.";
+            }
+        }
+    </script>
+
+</body>
+</html>

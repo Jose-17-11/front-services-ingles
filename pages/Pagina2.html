@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo del menú superior */
+        .menu {
+            background-color: #1B396B;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        .icono {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Contenedor principal */
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            background-color: #DDE3CC;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Estilo de cada caja */
+        .caja {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .caja img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .caja div {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .boton {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Estilo del botón "JUGAR" */
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #1B396B;
+        }
+
+        .jugar {
+            background-color: #0A66C2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <header class="menu">
+        <a href="Pagina1.html" class="icono">&#128682;</a> <!-- Ícono de logout -->
+        
+        <h1>MENÚ PRINCIPAL</h1>
+        <a href="Pagina3.html" class="icono">&#128100;</a> <!-- Ícono de perfil -->
+    </header>
+
+    <!-- Contenido de las cajas -->
+    <main class="contenido">
+        <div class="caja" style="background-color: #1CB0F6;">
+            <img src="../assets/trofeo.png" alt="Trofeo">
+            <div>
+                <h2>TABLA DE CLASIFICACIÓN</h2>
+                <p>Eres el Top 1°</p>
+            </div>
+            <a href="Pagina4.html" class="boton">ENTRAR</a>
+        </div>
+
+        <div class="caja" style="background-color: #CE82FF;">
+            <img src="../assets/persona.png" alt="Persona">
+            <div>
+                <h2>¿QUIÉN ESTÁ EN LÍNEA?</h2>
+                <p>3 en línea</p>
+            </div>
+            <a href="Pagina5.html" class="boton">ENTRAR</a>
+        </div>
+
+        <div class="caja" style="background-color: #E2C455;">
+            <img src="../assets/grafica.png" alt="Gráfica">
+            <div>
+                <h2>CONSULTA TU PROGRESO</h2>
+                <p>Visto hace 1 hora</p>
+            </div>
+            <a href="Pagina6.html" class="boton">ENTRAR</a>
+        </div>
+
+        <div class="caja" style="background-color: #FF4B4B;">
+            <img src="../assets/naranja.png" alt="Material Didáctico">
+            <div>
+                <h2>MATERIAL DIDÁCTICO</h2>
+                <p>Visto hace 1 día</p>
+            </div>
+            <a href="Pagina7.html" class="boton">ENTRAR</a>
+        </div>
+    <footer>
+        <a href="Pagina9.html">
+    <button class="jugar">JUGAR</button>
+</a>
+    </footer>
+    <div style="width: 100%; height: 300px; background-color: #1B396B;" id="obj-json" >
+
+    </div>
+</main>
+
+<script>
+    const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage (o cookies)
+
+    if (token) {
+        // Hacer la solicitud GET a la ruta protegida
+        fetch('http://localhost:3000/user', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Incluir el token en el encabezado
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No autorizado');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Usuarios:', data);
+
+            // Obtener el div y agregar el JSON
+            const jsonDiv = document.getElementById('obj-json');
+            jsonDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`; // Formatear el JSON para mejor legibilidad
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    } else {
+        console.log('No se encontró el token');
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Didáctico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #DDE3CC;
+        }
+
+        /* Menú superior */
+        .menu {
+            background-color: #1B396B;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        .icono {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Contenedor de Material Didáctico */
+        .contenido {
+            padding: 20px;
+            min-height: calc(100vh - 120px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1B396B;
+            margin-bottom: 20px;
+        }
+
+        .categoria {
+            margin-bottom: 20px;
+        }
+
+        .categoria h3 {
+            background-color: #1CB0F6;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .recursos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .recurso {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: calc(33% - 20px);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .recurso img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        .recurso p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .recurso a {
+            background-color: #1B396B;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .recurso a:hover {
+            background-color: #0A66C2;
+        }
+
+        /* Pie de página */
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #1B396B;
+        }
+
+        .jugar {
+            background-color: #0A66C2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <header class="menu">
+        <a href="Pagina2.html" class="icono">&#8592;</a> <!-- Flecha para volver -->
+        <h1>MATERIAL DIDÁCTICO</h1>
+        <a href="Pagina3-7.html" class="icono">&#128100;</a> <!-- Ícono de perfil -->
+    </header>
+
+    <!-- Contenido principal -->
+    <section class="contenido">
+        <h2>Recursos para Mejorar tu Inglés</h2>
+
+        <div class="categoria">
+            <h3>Vocabularios</h3>
+            <div class="recursos">
+                <div class="recurso">
+                    <img src="../assets/pdf1.png" alt="PDF">
+                    <p>Vocabulario Básico</p>
+                    <a href="vocabulario-basico-del-ingles.pdf" download="Vocabulario Basico.pdf">Abrir</a>
+                </div>
+                <div class="recurso">
+                    <img src="../assets/pdf2.png" alt="PDF">
+                    <p>Vocabulario Avanzado</p>
+                    <a href="../500-palabras-ingles.pdf" download>Abrir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria">
+            <h3>Tablas de Verbos</h3>
+            <div class="recursos">
+                <div class="recurso">
+                    <img src="../assets/pdf3.png" alt="PDF">
+                    <p>Verbos Irregulares</p>
+                    <a href="REGULAR-AND-IRREGULAR-VERBS.pdf" download>Abrir</a>
+                </div>
+                <div class="recurso">
+                    <img src="../assets/pdf4.png" alt="PDF">
+                    <p>Verbos Regulares</p>
+                    <a href="VERBS.pdf" download>Abrir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoria">
+            <h3>Imágenes y Palabras</h3>
+            <div class="recursos">
+                <div class="recurso">
+                    <img src="../assets/pdf5.png" alt="Imagen">
+                    <p>Palabra con Imagen</p>
+                    <a href="action-verbs-8-a4.pdf" download>Abrir</a>
+                </div>
+                <div class="recurso">
+                    <img src="../assets/pdf6.png" alt="Imagen">
+                    <p>Estados y Palabras</p>
+                    <a href="state-verbs-8-a4.pdf" download>Abrir</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        
+    </footer>
+
+</body>
+</html>

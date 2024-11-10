@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #DDE3CC;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 500px; /* Aumentamos el tamaño del contenedor */
+            background-color: #DDE3CC;
+            border-radius: 15px;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 30px; /* Aumentamos el tamaño de los botones */
+        }
+
+        .title {
+            font-size: 32px; /* Aumentamos el tamaño del título */
+            font-weight: bold;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* Avatar circular */
+        .profile-img {
+            width: 150px; /* Aumentamos el tamaño del avatar */
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #ccc;
+            margin: 0 auto 20px;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .profile-name {
+            font-size: 22px; /* Aumentamos el tamaño del nombre */
+            font-weight: bold;
+        }
+
+        .profile-id {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .badge-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .badge-container img {
+            max-width: 60px; /* Aumentamos el tamaño de la corona */
+            max-height: 60px;
+        }
+
+        .content-display-wrapper {
+            background-color: #1B396B; /* Color de fondo del rectángulo */
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .selection {
+            width: 200px;
+            position: relative;
+            text-align: center;
+            color: white; /* Cambiamos el color del texto a blanco para mejor visibilidad */
+            font-size: 20px; /* Aumentamos el tamaño del texto */
+        }
+
+        /* Imagen de Logros y círculo de progreso */
+        .images-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .logros-img,
+        .progreso-img {
+            width: 100px;
+            height: auto;
+        }
+
+        .progress-circle {
+            width: 120px; /* Aumentamos el tamaño del círculo de progreso */
+            height: 120px;
+            background: conic-gradient(#76c7c0 0% 76%, #ddd 76% 100%);
+            border-radius: 50%;
+        }
+
+        .chat-bubble {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #76c7c0;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* Estilo para el contenido que colapsa */
+        .collapse-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .collapse-content img {
+            max-width: 400px;
+            max-height: 400px;
+        }
+	
+	.insignia {
+            background-color: #FFD700;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            width: 80px;
+            height: 80px;
+        }
+
+        .insignia img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .insignia p {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #333;
+        }
+        .header .backs {
+            left: 90px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button onclick="goBack()">⟵</button>
+            <button class="back" onclick="goBacks()">&#127968;</button>
+            <div class="title">PERFIL</div>
+            <button onclick="addFriend()">➕</button>
+        </div>
+
+        <div class="profile-img">
+            <img src="img/avatar.png" alt="Avatar">
+        </div>
+        <div class="profile-name">NubMaster69</div>
+        <div class="profile-id">21680142</div>
+
+        <div class="badge-container" id="crown" onclick="toggleCollapse()">
+            <img src="img/corona.png" alt="Corona">
+        </div>
+
+        <!-- Contenido que colapsa al presionar la corona -->
+        <div class="collapse-content" id="collapseContent">
+            <img src="img/nivel.png" alt="Otra imagen">
+        </div>
+
+        <!-- Contenedor que agrupa "Logros" y "Progreso" en el mismo nivel dentro de un rectángulo -->
+        <div class="content-display-wrapper">
+            <div class="selection">
+                <p>Logros</p>
+            </div>
+            <div class="selection">
+                <p>Progreso</p>
+            </div>
+        </div>
+
+        <!-- Contenedor para las imágenes de Logros y Progreso (fuera del rectángulo) -->
+        <div class="images-container">
+            <div class="logros-img">
+                <img src="img/bandera.png" alt="Bandera de Logros" width="100">
+            </div>
+            <div class="progreso-img">
+                <div class="progress-circle"></div>
+                <p>76%</p>
+            </div>
+        </div>
+
+        <div class="chat-bubble" id="chatBubble">Agregado a amigos</div>
+    </div>
+
+    <!-- Insignias 
+        <div class="insignias">
+            <div class="insignia">
+                <img src="img/medalla.png" alt="Insignia 1">
+                <p>Jugador Activo</p>
+            </div>
+            <div class="insignia">
+                <img src="img/trofeoo.png" alt="Insignia 2">
+                <p>Top 1°</p>
+            </div>
+            <div class="insignia">
+                <img src="img/medalla.png" alt="Insignia 3">
+                <p>Aydar a otros</p>
+            </div>
+        </div>-->
+
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = 'Pagina4.html'; // Cambia esto a la URL deseada
+        }
+
+        function addFriend() {
+            var bubble = document.getElementById('chatBubble');
+            bubble.classList.add('show');
+            setTimeout(function() {
+                bubble.classList.remove('show');
+            }, 2000); // Ocultar después de 2 segundos
+        }
+
+        function toggleCollapse() {
+            var collapseContent = document.getElementById('collapseContent');
+            // Mostrar u ocultar el contenido colapsable
+            if (collapseContent.style.display === "none" || collapseContent.style.display === "") {
+                collapseContent.style.display = "block";
+            } else {
+                collapseContent.style.display = "none";
+            }
+        }
+
+function goBacks() {
+            window.location.href = 'Pagina2.html';
+        }
+    </script>
+</body>
+</html>

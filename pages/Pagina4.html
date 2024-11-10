@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Clasificación</title>
+    <style>
+        /* Reset general */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* El body ocupa el 100% de la pantalla */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #DDE3CC;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Encabezado que ocupa todo el ancho */
+        .header {
+            background-color: #1B396B;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .header button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+        }
+
+        .header .back {
+            left: 20px;
+        }
+        .header .backs {
+            left: 90px;
+        }
+
+        .header .profile {
+            right: 20px;
+        }
+
+        /* Contenedor principal que se ajusta al 100% */
+        .container {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Ranking principal ocupa todo el ancho */
+        .ranking {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .ranking-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .ranking-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 0%;
+            background-color: #ccc;
+        }
+
+        .ranking-item p {
+            margin-top: 10px;
+        }
+
+        /* Estilos del podio */
+        .first-place {
+            background-color: #63D467;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+        }
+
+        .second-place {
+            background-color: #FFE464;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+        }
+
+        .third-place {
+            background-color: #F7827B;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-size: 24px;
+        }
+
+        /* Lista de posiciones ocupa todo el ancho */
+        .ranking-list {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ranking-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .ranking-list img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        .ranking-list .position {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Footer que ocupa todo el ancho */
+        footer {
+            background-color: #1B396B;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <div class="header">
+        <button class="backs" onclick="goBack()">⟵</button>
+        
+        TABLA DE CLASIFICACIÓN
+        <button class="profile" onclick="goToProfile()">👤</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <!-- Clasificación de los tres primeros puestos -->
+        <div class="ranking">
+            <div class="ranking-item">
+                <img src="img/avatar1.png" alt="Avatar 3er lugar">
+                <p>Ulloa</p>
+                <p class="third-place">232</p>
+	        <img src="img/trofeo3.png" alt="Avatar 3er lugar">
+            </div>
+            <div class="ranking-item">
+                <img src="img/avatar2.png" alt="Avatar 2do lugar">
+                <p>Euxiono</p>
+                <p class="second-place">235</p>
+		<img src="img/trofeo2.png" alt="Avatar 3er lugar">
+            </div>
+            <div class="ranking-item">
+                <img src="img/avatar3.png" alt="Avatar 1er lugar">
+                <p>NubMaster69</p>
+                <p class="first-place">253</p>
+		<img src="img/trofeo1.png" alt="Avatar 3er lugar">
+            </div>
+        </div>
+
+        <!-- Lista de otros puestos -->
+        <ul class="ranking-list">
+            <li>
+                <span class="position">4.</span>
+                <img src="img/avatar4.png" alt="Avatar puesto 4">
+                <span>Bonifacio </span>
+		<span class="position"></span>
+                <span class="position">230</span>
+            </li>
+            <li>
+                <span class="position">5.</span>
+                <img src="img/avatar5.png" alt="Avatar puesto 5">
+                <span>Alfredo</span>
+		<span class="position"></span>
+                <span class="position">220</span>
+            </li>
+            <li>
+                <span class="position">6.</span>
+                <img src="img/avatar6.png" alt="Avatar puesto 6">
+                <span>Sigma Chad</span>
+		<span class="position"></span>
+                <span class="position">217</span>
+            </li>
+	    <li>
+                <span class="position">7.</span>
+                <img src="img/avatar4.png" alt="Avatar puesto 7">
+                <span>Sigma Chad</span>
+		<span class="position"></span>
+                <span class="position">211</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <a href="partida_rapida.html" style="color:white;"></a>
+    </footer>
+
+    <script>
+        function goBack() {
+            window.location.href = 'Pagina2.html';
+        }
+
+        function goToProfile() {
+            window.location.href = 'Pagina3-4.html';
+        }
+        function goBacks() {
+            window.location.href = 'Pagina2.html';
+        }
+    </script>
+
+</body>
+</html>

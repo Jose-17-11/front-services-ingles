@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta tu Progreso</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4E2;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo del menú superior */
+        .menu {
+            background-color: #1B396B;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        .icono {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Contenedor de progreso */
+        .progreso-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #F4F4E2;
+        }
+
+        /* Tarjetas de módulos con diferentes colores */
+        .modulo {
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 700px;
+            color: white;
+        }
+
+        /* Colores para diferentes estados del módulo */
+        .modulo.completado {
+            background-color: #4CAF50; /* Verde para completado */
+        }
+
+        .modulo.en-progreso {
+            background-color: #2196F3; /* Azul para en progreso */
+        }
+
+        .modulo.no-iniciado {
+            background-color: #9E9E9E; /* Gris para no iniciado */
+        }
+
+        .modulo h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .modulo p {
+            font-size: 16px;
+        }
+
+        .boton {
+            background-color: white;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color: #ddd;
+        }
+
+        /* Información de colapso */
+        .contenido-colapsable {
+            display: none;
+            background-color: #fff;
+            color: #333;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            width: 90%;
+        }
+
+        /* Colores para las unidades desplegadas */
+        .unidad {
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .unidad.completado {
+            background-color: #4CAF50; /* Verde para unidades completadas */
+        }
+
+        .unidad.en-progreso {
+            background-color: #2196F3; /* Azul para unidades en progreso */
+        }
+
+        .unidad.no-iniciado {
+            background-color: #9E9E9E; /* Gris para unidades no iniciadas */
+        }
+
+        /* Barra de progreso */
+        .barra-progreso {
+            width: 100%;
+            height: 25px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .barra-progreso .progreso {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 70%; /* Ajusta el valor para representar el porcentaje completado */
+        }
+
+        /* Gamer badges */
+        .insignias {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .insignia {
+            background-color: #FFD700;
+            padding: 10px;
+            border-radius: 50%;
+            text-align: center;
+            width: 80px;
+            height: 80px;
+        }
+
+        .insignia img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .insignia p {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Estilo del botón "JUGAR" */
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #1B396B;
+        }
+
+        .jugar {
+            background-color: #0A66C2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <header class="menu">
+        <a href="Pagina2.html" class="icono">&#8592;</a> <!-- Flecha para regresar -->
+        <h1>CONSULTA TU PROGRESO</h1>
+        <a href="Pagina3-6.html" class="icono">&#128100;</a> <!-- Ícono de perfil -->
+    </header>
+
+    <!-- Contenedor de progreso -->
+    <div class="progreso-container">
+
+        <!-- Modulo 1 completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Básico 1</h2>
+                <p>Completado hace 22 semanas</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse1')">Revisar</button>
+        </div>
+        <div id="collapse1" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Introducción a la gramática básica</div>
+            <div class="unidad completado">Unidad 2: Verbos regulares e irregulares</div>
+            <div class="unidad completado">Unidad 3: Frases cotidianas en inglés</div>
+        </div>
+
+	<!-- Modulo 1 completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Básico 2</h2>
+                <p>Completado hace 18 semanas</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse2')">Revisar</button>
+        </div>
+        <div id="collapse2" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Los tiempos verbales en presente (presente simple y presente continuo)</div>
+            <div class="unidad completado">Unidad 2: Vocabulario de objetos y lugares comunes</div>
+            <div class="unidad completado">Unidad 3: Pronombres personales y demostrativos</div>
+	    <div class="unidad completado">Unidad 4: Preguntas y respuestas simples (formación de preguntas, wh- questions)</div>
+	    <div class="unidad completado">Unidad 5: Artículos definidos e indefinidos (a, an, the)</div>
+        </div>
+
+	<!-- Modulo 1 completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Básico 3</h2>
+                <p>Completado hace 10 semanas</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse3')">Revisar</button>
+        </div>
+        <div id="collapse3" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Pasado simple y pasado continuo</div>
+            <div class="unidad completado">Unidad 2: Preposiciones de lugar y tiempo (in, on, at)</div>
+            <div class="unidad completado">Unidad 3: Adjetivos y su orden en las oraciones</div>
+	    <div class="unidad completado">Unidad 4: Vocabulario de actividades cotidianas y tiempo libre</div>
+	    <div class="unidad completado">Unidad 5: Conjunciones básicas (and, but, because, so)</div>
+        </div>
+	
+	<!-- Modulo 1 completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Básico 4</h2>
+                <p>Completado hace 6 semanas</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse4')">Revisar</button>
+        </div>
+        <div id="collapse4" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Futuro simple y futuro con "going to"</div>
+            <div class="unidad completado">Unidad 2: Vocabulario de viajes y direcciones</div>
+            <div class="unidad completado">Unidad 3: Uso de "There is" y "There are"</div>
+	    <div class="unidad completado">Unidad 4: Comparativos y superlativos (bigger, more interesting)</div>
+	    <div class="unidad completado">Unidad 5: Adverbios de frecuencia y cantidad (always, never, often)</div>
+        </div>
+
+	<!-- Modulo 1 completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Básico 5</h2>
+                <p>Completado hace 2 semanas</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse5')">Revisar</button>
+        </div>
+        <div id="collapse5" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Present perfect (uso y estructura)</div>
+            <div class="unidad completado">Unidad 2: Vocabulario relacionado con la salud y el bienestar</div>
+            <div class="unidad completado">Unidad 3: Modal verbs básicos (can, could, should)</div>
+	    <div class="unidad completado">Unidad 4: Formación de oraciones condicionales básicas (if + presente, futuro)</div>
+	    <div class="unidad completado">Unidad 5: El uso de "must", "have to" y "need to"</div>
+        </div>
+
+
+        <!-- Modulo 2 en completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Intermedio 1</h2>
+                <p>Completado</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse6')">Continuar</button>
+        </div>
+        <div id="collapse6" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Pasado perfecto</div>
+            <div class="unidad completado">Unidad 2: Futuro perfecto y futuro continuo</div>
+            <div class="unidad completado">Unidad 3: Vocabulario relacionado con el trabajo y profesiones</div>
+	    <div class="unidad completado">Unidad 4: Frases de cortesía y modales (politeness strategies)</div>
+	    <div class="unidad completado">Unidad 5: Expresiones idiomáticas comunes</div>
+        </div>
+
+	<!-- Modulo 2 en completado (verde) -->
+        <div class="modulo completado">
+            <div>
+                <h2>Inglés Intermedio 2</h2>
+                <p>Completado</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse7')">Continuar</button>
+        </div>
+        <div id="collapse7" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: Condicionales tipo 2 y tipo 3</div>
+            <div class="unidad completado">Unidad 2: Phrasal verbs (verbos compuestos comunes)</div>
+            <div class="unidad completado">Unidad 3: Uso avanzado de preposiciones (across, beyond, throughout)</div>
+	    <div class="unidad completado">Unidad 4: Reported speech (discurso indirecto)</div>
+	    <div class="unidad completado">Unidad 5: Vocabulario relacionado con la tecnología</div>
+        </div>
+
+	<!-- Modulo 2 en completado (verde) -->
+        <div class="modulo en-progreso">
+            <div>
+                <h2>Inglés Intermedio 3</h2>
+                <p>En progreso - 45% Completado</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse8')">Continuar</button>
+        </div>
+        <div id="collapse8" class="contenido-colapsable">
+            <h3>Unidades del Módulo</h3>
+            <div class="unidad completado">Unidad 1: La voz pasiva</div>
+            <div class="unidad completado">Unidad 2: Oraciones relativas (who, which, that)</div>
+            <div class="unidad en-progreso">Unidad 3: Gerundios e infinitivos</div>
+	    <div class="unidad no-iniciado">Unidad 4: Vocabulario académico y de estudio</div>
+	    <div class="unidad no-iniciado">Unidad 5: Expresiones de probabilidad y especulación (might, may, must)</div>
+        </div>
+
+	<!-- Modulo 2 en completado (verde) -->
+        <div class="modulo no-iniciado">
+            <div>
+                <h2>Inglés Intermedio 4</h2>
+                <p>No iniciado</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse9')">Continuar</button>
+        </div>
+        <div id="collapse9" class="contenido-colapsable">
+            <div class="unidad no-iniciado">Unidad 1: Conectores avanzados (although, even though, despite, however)</div>
+            <div class="unidad no-iniciado">Unidad 2: El uso del subjuntivo en inglés</div>
+            <div class="unidad no-iniciado">Unidad 3: Vocabulario relacionado con la ciencia y la naturaleza</div>
+	    <div class="unidad no-iniciado">Unidad 4: Distinciones entre tiempos perfectos</div>
+	    <div class="unidad no-iniciado">Unidad 5: Collocations (combinaciones frecuentes de palabras)</div>
+        </div>
+
+	<!-- Modulo 2 no iniciado (gris) -->
+        <div class="modulo no-iniciado">
+            <div>
+                <h2>Inglés Intermedio 5</h2>
+                <p>No iniciado</p>
+            </div>
+            <button class="boton" onclick="toggleCollapse('collapse10')">Continuar</button>
+        </div>
+        <div id="collapse10" class="contenido-colapsable">
+            <div class="unidad no-iniciado">Unidad 1: Inversiones en inglés para enfatizar (Hardly had I, Never have I)</div>
+            <div class="unidad no-iniciado">Unidad 2: Expresiones idiomáticas avanzadas</div>
+            <div class="unidad no-iniciado">Unidad 3: Vocabulario de emociones y sentimientos</div>
+	    <div class="unidad no-iniciado">Unidad 4: Negociación y persuasión en inglés</div>
+	    <div class="unidad no-iniciado">Unidad 5: Preparación para presentaciones y exposiciones</div>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div class="barra-progreso">
+            <div class="progreso"></div>
+        </div>
+76%
+        <!-- Insignias 
+        <div class="insignias">
+            <div class="insignia">
+                <img src="img/medalla.png" alt="Insignia 1">
+                <p>Jugador Activo</p>
+            </div>
+            <div class="insignia">
+                <img src="img/trofeoo.png" alt="Insignia 2">
+                <p>Top 1°</p>
+            </div>
+            <div class="insignia">
+                <img src="img/medalla.png" alt="Insignia 3">
+                <p>Aydar a otros</p>
+            </div>
+        </div>-->
+
+    </div>
+<div>l</div>
+
+    <!-- Footer con botón "JUGAR" -->
+    <footer>
+       
+    </footer>
+
+    <script>
+        function toggleCollapse(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

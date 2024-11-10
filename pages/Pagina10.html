@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Carga</title>
+    <style>
+        /* Estilo de la pantalla de carga */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1E3A5F;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Animación de los puntos de carga */
+        .loading-dots {
+            display: inline-block;
+            font-size: 30px;
+        }
+
+        .loading-dots span {
+            animation: blink 1s infinite alternate;
+            opacity: 0.3;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: 0s; }
+        .loading-dots span:nth-child(2) { animation-delay: 0.3s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.6s; }
+
+        /* Animaciones */
+        @keyframes blink {
+            100% { opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor de la pantalla de carga -->
+    <div class="loading-container">
+        <h1>¡PARTIDA ENCONTRADA!</h1>
+        <h1>¡Piensa Rápido!</h1>
+        <h1>Contrincante: "USUARIO"</h1>
+        <div class="loading-dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
+    </div>
+
+    <script>
+        // Simula el tiempo de carga y redirige a la página principal después de 3 segundos
+        setTimeout(() => {
+            window.location.href = "Pagina8.html"; // Cambia esto por la URL de la página a la que quieres ir
+        }, 3000);
+    </script>
+
+</body>
+</html>

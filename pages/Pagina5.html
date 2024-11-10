@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios en Línea</title>
+    <style>
+        /* Reset de márgenes y paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo del menú superior */
+        .menu {
+            background-color: #1B396B;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        .icono {
+            text-decoration: none;
+            color: white;
+            font-size: 30px;
+        }
+
+        /* Contenedor principal */
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            background-color: #F4F4E2;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Estilo de cada usuario */
+        .usuario {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        /* Avatares circulares */
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .usuario div {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .boton {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Específicos de los usuarios */
+        .usuario.azul { background-color: #1CB0F6; } /* Bonifacio */
+        .usuario.morado { background-color: #CE82FF; } /* Alfredo */
+        .usuario.amarillo { background-color: #E2C455; } /* Sigma Chad */
+        .usuario.rojo { background-color: #FF4B4B; } /* Skibidi Toilet */
+
+        /* Estilo del botón "JUGAR" */
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #1B396B;
+        }
+
+        .jugar {
+            background-color: #0A66C2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+	
+	/* Estilo de cada caja */
+        .caja {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .caja img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .caja div {
+            flex: 1;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú superior -->
+    <header class="menu">
+        <a href="Pagina2.html" class="icono">&#8592;</a> <!-- Flecha para regresar -->
+        <h1>Usuarios en línea</h1>
+        <a href="Pagina3-5.html" class="icono">&#128100;</a> <!-- Ícono de perfil -->
+    </header>
+
+    <!-- Lista de usuarios -->
+    <main class="contenido">
+        <div class="caja" style="background-color: #1CB0F6;">
+            <img src="img/avatar3.png" alt="Trofeo">
+            <div>
+                <h2> Bonifacio
+                <img src="img/coronazul.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
+            </h2>
+                <p>Activo/a ahora!</p>
+            </div>
+            <a href="clasificacion.html" class="boton">DESAFIAR</a>
+        </div>
+	
+        <div class="caja" style="background-color: #CE82FF;">
+            <img src="img/avatar6.png" alt="Trofeo">
+            <div>
+                <h2> Alfredo
+                <img src="img/coronamor.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
+            </h2>
+                <p>Activo/a ahora!</p>
+            </div>
+            <a href="clasificacion.html" class="boton">DESAFIAR</a>
+        </div>
+
+        <div class="caja" style="background-color: #E2C455;">
+            <img src="img/avatar4.png" alt="Trofeo">
+            <div>
+                <h2> Sigma Chad
+                <img src="img/coronaroj.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
+            </h2>
+                <p>Activo/a ahora!</p>
+            </div>
+            <a href="clasificacion.html" class="boton">DESAFIAR</a>
+        </div>
+
+        <div class="caja" style="background-color: #FF4B4B;">
+            <img src="img/avatar2.png" alt="Trofeo">
+            <div>
+                <h2> Skibidi Toilet
+                <img src="img/coronamar.png" alt="Icono" style="width: 60px; height: 50px; margin-right: 10px;">
+            </h2>
+                <p>Activo/a hace 5 minutos!</p>
+            </div>
+            <a href="clasificacion.html" class="boton">DESAFIAR</a>
+        </div>
+    </main>
+
+    <!-- Botón de jugar -->
+    <footer>
+        
+    </footer>
+
+</body>
+</html>
