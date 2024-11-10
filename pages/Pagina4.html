@@ -4,6 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla de Clasificación</title>
+    <script src="../scripts/verify-token.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            getUsers();
+        });
+
+        async function getUsers() {
+            const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage (o cookies)
+            if (token) {
+                const response = await fetch('http://localhost:3000/user', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    const users = await response.json();
+                    displayRanking(users);
+                } else {
+                    console.error('Error al obtener usuarios');
+                    window.location.href = "Pagina1.html";
+                }
+            } 
+        }
+
+        function displayRanking(users) {
+            // Ordenar los usuarios por 'nivel_mas_alto' de mayor a menor
+            users.sort((a, b) => b.nivel_mas_alto - a.nivel_mas_alto);
+
+            // Tomar los tres primeros usuarios
+            const topThree = users.slice(0, 3);
+
+            // Actualizar el HTML con los datos
+            const rankingItems = document.querySelectorAll('.ranking-item');
+            
+            topThree.forEach((user, index) => {
+                const rankingItem = rankingItems[index];
+                
+                // Actualizar nombre
+                rankingItem.querySelector('.name').textContent = user.nombre;
+                
+                // Actualizar nivel más alto
+                rankingItem.querySelector('.point').textContent = user.nivel_mas_alto;
+
+                // Puedes personalizar los trofeos si los deseas mostrar basados en la posición
+                // Por ejemplo, si deseas añadir un trofeo específico, ya tienes las imágenes en el HTML
+            });
+        }
+    </script>
     <style>
         /* Reset general */
         * {
@@ -167,24 +218,25 @@
     <!-- Contenido principal -->
     <div class="container">
         <!-- Clasificación de los tres primeros puestos -->
+        <!-- Clasificación de los tres primeros puestos -->
         <div class="ranking">
-            <div class="ranking-item">
-                <img src="img/avatar1.png" alt="Avatar 3er lugar">
-                <p>Ulloa</p>
-                <p class="third-place">232</p>
-	        <img src="img/trofeo3.png" alt="Avatar 3er lugar">
+            <div class="ranking-item itemOne">
+                <img src="../assets/avatar1.png" alt="Avatar 1er lugar">
+                <p class="name"></p>
+                <p class="first-place point">0</p>
+                <img src="../assets/trofeo1.png" alt="Avatar 1er lugar">
             </div>
-            <div class="ranking-item">
-                <img src="img/avatar2.png" alt="Avatar 2do lugar">
-                <p>Euxiono</p>
-                <p class="second-place">235</p>
-		<img src="img/trofeo2.png" alt="Avatar 3er lugar">
+            <div class="ranking-item itemTwo">
+                <img src="../assets/avatar2.png" alt="Avatar 2do lugar">
+                <p class="name"></p>
+                <p class="second-place point">0</p>
+                <img src="../assets/trofeo2.png" alt="Avatar 2do lugar">
             </div>
-            <div class="ranking-item">
-                <img src="img/avatar3.png" alt="Avatar 1er lugar">
-                <p>NubMaster69</p>
-                <p class="first-place">253</p>
-		<img src="img/trofeo1.png" alt="Avatar 3er lugar">
+            <div class="ranking-item itemTrhee">
+                <img src="../assets/avatar3.png" alt="Avatar 3er lugar">
+                <p class="name"></p>
+                <p class="third-place point">0</p>
+                <img src="../assets/trofeo3.png" alt="Avatar 3er lugar">
             </div>
         </div>
 
@@ -192,30 +244,52 @@
         <ul class="ranking-list">
             <li>
                 <span class="position">4.</span>
-                <img src="img/avatar4.png" alt="Avatar puesto 4">
+                <img src="../assets/avatar4.png" alt="Avatar puesto 4">
                 <span>Bonifacio </span>
-		<span class="position"></span>
+		        <span class="position"></span>
                 <span class="position">230</span>
             </li>
             <li>
                 <span class="position">5.</span>
-                <img src="img/avatar5.png" alt="Avatar puesto 5">
+                <img src="../assets/avatar5.png" alt="Avatar puesto 5">
                 <span>Alfredo</span>
-		<span class="position"></span>
+		        <span class="position"></span>
                 <span class="position">220</span>
             </li>
             <li>
                 <span class="position">6.</span>
-                <img src="img/avatar6.png" alt="Avatar puesto 6">
+                <img src="../assets/avatar6.png" alt="Avatar puesto 6">
                 <span>Sigma Chad</span>
-		<span class="position"></span>
+		        <span class="position"></span>
                 <span class="position">217</span>
             </li>
-	    <li>
+	        <li>
                 <span class="position">7.</span>
-                <img src="img/avatar4.png" alt="Avatar puesto 7">
+                <img src="../assets/avatar4.png" alt="Avatar puesto 7">
                 <span>Sigma Chad</span>
-		<span class="position"></span>
+		        <span class="position"></span>
+                <span class="position">211</span>
+            </li>
+            
+            <li>
+                <span class="position">8.</span>
+                <img src="../assets/avatar5.png" alt="Avatar puesto 5">
+                <span>Alfredo</span>
+		        <span class="position"></span>
+                <span class="position">220</span>
+            </li>
+            <li>
+                <span class="position">9.</span>
+                <img src="../assets/avatar6.png" alt="Avatar puesto 6">
+                <span>Sigma Chad</span>
+		        <span class="position"></span>
+                <span class="position">217</span>
+            </li>
+	        <li>
+                <span class="position">10.</span>
+                <img src="../assets/avatar4.png" alt="Avatar puesto 7">
+                <span>Sigma Chad</span>
+		        <span class="position"></span>
                 <span class="position">211</span>
             </li>
         </ul>
@@ -238,6 +312,5 @@
             window.location.href = 'Pagina2.html';
         }
     </script>
-
 </body>
 </html>
