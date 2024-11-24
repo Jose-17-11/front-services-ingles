@@ -4,8 +4,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     let user = document.getElementById("email").value;
     let pass = document.getElementById("password").value;
-    const data = {email: user, password: pass}
-    const response = postData('http://localhost:3000/user',data)
+    const response = postData('http://localhost:3000/user', {email: user, password: pass})
     console.log(response);  
 })
 
@@ -13,8 +12,8 @@ form.addEventListener('submit', (event) => {
 async function postData(url, data) {
     // Opciones por defecto estan marcadas con un *
     const response = await fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
+        method: 'POST', 
+        mode: 'cors', 
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
@@ -34,6 +33,13 @@ async function postData(url, data) {
             console.log('Token almacenado en localStorage');
         } else {
             console.log("el token no se pudo almacenar: ");
+        }
+        // Almacenar el userId en las cookies
+        if (result.userId) {
+            document.cookie = `userId=${result.userId}; max-age=600; path=/; secure; samesite=strict`;  // max-age es en segundos
+            console.log('userId almacenado en cookies');
+        } else {
+            console.log("el userId no se pudo almacenar en las cookies");
         }
         window.location.href = "Pagina2.html";
         return result;

@@ -23,6 +23,8 @@
                 });
                 if (response.ok) {
                     const users = await response.json();
+                    console.log(users);
+                    
                     displayRanking(users);
                     displayRankingEleven(users);
                 } else {

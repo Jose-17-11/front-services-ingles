@@ -14,7 +14,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
         .container {
@@ -185,7 +184,7 @@
     <div class="container">
         <div class="header">
             <button onclick="goBack()">⟵</button>
-        <a href="Pagina2.html" class="icono">&#127968;</a> <!-- Ícono de home -->
+            <a href="Pagina2.html" class="icono">&#127968;</a> <!-- Ícono de home -->
             <div class="title">PERFIL</div>
             <button onclick="addFriend()">➕</button>
         </div>
@@ -269,6 +268,51 @@
                 collapseContent.style.display = "none";
             }
         }
+
+        function getCookie(name) {
+        const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [key, value] = cookie.trim().split('=');
+                if (key === name) {
+                    return value;
+                }
+            }
+            return null; // Retorna null si no encuentra la cookie
+        }
+
+
+        // Obtiene datos del usuario logueado
+        async function getUsers() {
+            const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage (o cookies)
+            const userId = getCookie('userId');;
+            const url = `http://localhost:3000/users-data/${userId}`
+            console.log(url);
+            if (token) {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    const users = await response.json();
+                    const { id_usuario, email, nombre, no_control, status } = users;
+                    // Seleccionamos los elementos del DOM
+                    const profileNameElement = document.querySelector('.profile-name');
+                    const profileIdElement = document.querySelector('.profile-id');
+                    // Inyectamos los datos
+                    profileNameElement.textContent = nombre; // Nombre del usuario
+                    profileIdElement.textContent = no_control; // No. de control del usuario
+
+                } else {
+                    console.error('Error al obtener usuarios');
+                    console.log("La respuesta erronea es: ", response)
+                }
+            } 
+        }
+
+        getUsers()
     </script>
 </body>
 </html>
