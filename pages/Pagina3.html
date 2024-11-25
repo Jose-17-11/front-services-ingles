@@ -284,7 +284,7 @@
         // Obtiene datos del usuario logueado
         async function getUsers() {
             const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage (o cookies)
-            const userId = getCookie('userId');;
+            const userId = getCookie('userId');
             const url = `http://localhost:3000/users-data/${userId}`
             console.log(url);
             if (token) {
