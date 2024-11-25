@@ -210,14 +210,14 @@
     <div class="progreso-container">
 
         <!-- Módulo 1 -->
-        <div class="modulo completado">
+        <div class="nivel-1 modulo">
             <div>
                 <h2>Inglés Básico 1</h2>
                 <p>Completado hace 22 semanas</p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse1')">Revisar</button>
         </div>
-        <div id="collapse1" class="nivel-1 contenido-colapsable">
+        <div id="collapse1" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
             <div class="n1-unidad-1 unidad completado">Unidad 1: Introducción a la gramática básica</div>
             <div class="n1-unidad-2 unidad completado">Unidad 2: Verbos regulares e irregulares</div>
@@ -225,14 +225,14 @@
         </div>
 
         <!-- Módulo 2 -->
-        <div class="modulo completado">
+        <div class="nivel-2 modulo">
             <div>
                 <h2>Inglés Básico 2</h2>
                 <p>Completado hace 18 semanas</p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse2')">Revisar</button>
         </div>
-        <div id="collapse2" class="nivel-2 contenido-colapsable">
+        <div id="collapse2" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
             <div class="n2-unidad-1 unidad completado">Unidad 1: Los tiempos verbales en presente (presente simple y presente continuo)</div>
             <div class="n2-unidad-2 unidad completado">Unidad 2: Vocabulario de objetos y lugares comunes</div>
@@ -242,7 +242,7 @@
         </div>
 
         <!-- Módulo 3 -->
-        <div class="modulo completado">
+        <div class="nivel-3 modulo">
             <div>
                 <h2>Inglés Básico 3</h2>
                 <p>Completado hace 10 semanas</p>
@@ -259,14 +259,14 @@
         </div>
 
         <!-- Módulo 4 -->
-        <div class="modulo completado">
+        <div class="nivel-4 modulo">
             <div>
                 <h2>Inglés Básico 4</h2>
                 <p>Completado hace 6 semanas</p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse4')">Revisar</button>
         </div>
-        <div id="collapse4" class="nivel-4 contenido-colapsable">
+        <div id="collapse4" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
             <div class="n4-unidad-1 unidad completado">Unidad 1: Futuro simple y futuro con "going to"</div>
             <div class="n4-unidad-2 unidad completado">Unidad 2: Vocabulario de viajes y direcciones</div>
@@ -276,14 +276,14 @@
         </div>
 
         <!-- Módulo 5 -->
-        <div class="modulo completado">
+        <div class="nivel-5 modulo">
             <div>
                 <h2>Inglés Básico 5</h2>
                 <p>Completado hace 2 semanas</p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse5')">Revisar</button>
         </div>
-        <div id="collapse5" class="nivel-5 contenido-colapsable">
+        <div id="collapse5" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
             <div class="n5-unidad-1 unidad completado">Unidad 1: Present perfect</div>
             <div class="n5-unidad-2 unidad completado">Unidad 2: Vocabulario relacionado con la salud</div>
@@ -294,7 +294,7 @@
 
 
                 <!-- Modulo 2 en completado (verde) -->
-        <div class="modulo completado nivel-6">
+        <div class="modulo nivel-6">
             <div>
                 <h2>Inglés Intermedio 1</h2>
                 <p>Completado</p>
@@ -311,7 +311,7 @@
         </div>
 
         <!-- Modulo 2 en completado (verde) -->
-        <div class="modulo completado nivel-7">
+        <div class="modulo nivel-7">
             <div>
                 <h2>Inglés Intermedio 2</h2>
                 <p>Completado</p>
@@ -328,7 +328,7 @@
         </div>
 
         <!-- Modulo 2 en progreso (amarillo) -->
-        <div class="modulo en-progreso nivel-8">
+        <div class="modulo nivel-8">
             <div>
                 <h2>Inglés Intermedio 3</h2>
                 <p>En progreso - 45% Completado</p>
@@ -345,7 +345,7 @@
         </div>
 
         <!-- Modulo 2 no iniciado (gris) -->
-        <div class="modulo no-iniciado nivel-9">
+        <div class="modulo nivel-9">
             <div>
                 <h2>Inglés Intermedio 4</h2>
                 <p>No iniciado</p>
@@ -361,7 +361,7 @@
         </div>
 
         <!-- Modulo 2 no iniciado (gris) -->
-        <div class="modulo no-iniciado nivel-10">
+        <div class="modulo nivel-10">
             <div>
                 <h2>Inglés Intermedio 5</h2>
                 <p>No iniciado</p>
@@ -466,31 +466,52 @@
 
     <script>
         async function getPorcentajeParcial() {
-        const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage
-        const userId = getCookie('userId');  // Obtener el userId de las cookies
-        if (token) {
-            const response = await fetch(`http://localhost:3000/user-progreso-parcial/${userId}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            });
-            
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data);  // Muestra el objeto completo
-                
-                const porcentaje = parseFloat(data.porcentaje_total);  // Convierte el valor a número
-                console.log(porcentaje);
-                
-            } else {
-                console.error('Error al obtener el porcentaje');
-            }
-        } 
-    }
+    const token = localStorage.getItem('authToken'); // Recuperar el token desde localStorage
+    const userId = getCookie('userId'); // Obtener el userId de las cookies
 
-    getPorcentajeParcial()
+    if (token) {
+        const response = await fetch(`http://localhost:3000/user-progreso-parcial/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json(); // Array de datos
+            console.log(data); // Muestra el arreglo completo
+            
+            // Iterar sobre la respuesta y asignar clases dinámicamente
+            data.forEach((nivel) => {
+                const porcentaje = parseFloat(nivel.porcentaje_completado);
+                const idNivel = nivel.id_nivel;
+
+                // Seleccionar el elemento correspondiente al nivel
+                const elementoNivel = document.querySelector(`.nivel-${idNivel}`);
+                
+                if (elementoNivel) {
+                    // Limpiar clases previas
+                    elementoNivel.classList.remove('completado', 'en-progreso', 'no-iniciado');
+                    
+                    // Asignar clases según el porcentaje
+                    if (porcentaje === 100) {
+                        elementoNivel.classList.add('completado');
+                    } else if (porcentaje > 0) {
+                        elementoNivel.classList.add('en-progreso');
+                    } else {
+                        elementoNivel.classList.add('no-iniciado');
+                    }
+                }
+            });
+        } else {
+            console.error('Error al obtener el porcentaje parcial');
+        }
+    }
+}
+
+getPorcentajeParcial();
+
     </script>
 </body>
 </html>
