@@ -125,11 +125,19 @@
         }
 
         .progress-circle {
-            width: 120px; /* Aumentamos el tamaño del círculo de progreso */
-            height: 120px;
-            background: conic-gradient(#76c7c0 0% 76%, #ddd 76% 100%);
-            border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        background: conic-gradient(#ddd 0% 100%); /* Inicialmente vacío */
+        border-radius: 50%;
         }
+
+        .progress-text {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
 
         .chat-bubble {
             display: none;
@@ -221,7 +229,7 @@
             </div>
             <div class="progreso-img">
                 <div class="progress-circle"></div>
-                <p>76%</p>
+                <p class="progress-text">0%</p>
             </div>
         </div>
 
@@ -313,6 +321,42 @@
         }
 
         getUsers()
+
+        async function getPorcentajeTola() {
+        const token = localStorage.getItem('authToken'); // Recuperar el token desde localStorage
+        const userId = getCookie('userId'); // Obtener el userId de las cookies
+
+        if (token) {
+            const response = await fetch(`http://localhost:3000/user-progreso-total/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const porcentaje = parseFloat(data.porcentaje_total); // Convertir a número
+
+                if (!isNaN(porcentaje)) {
+                    // Actualizar el círculo de progreso
+                    const progressCircle = document.querySelector('.progress-circle');
+                    progressCircle.style.background = `conic-gradient(#76c7c0 0% ${porcentaje}%, #ddd ${porcentaje}% 100%)`;
+
+                    // Actualizar el texto del porcentaje
+                    const progressText = document.querySelector('.progress-text');
+                    progressText.textContent = `${Math.round(porcentaje)}%`;
+                }
+            } else {
+                console.error('Error al obtener el porcentaje');
+            }
+        }
+    }
+
+    // Llamar a la función
+    getPorcentajeTola();
+
     </script>
 </body>
 </html>
