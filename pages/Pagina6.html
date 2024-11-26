@@ -213,7 +213,7 @@
         <div class="nivel-1 modulo">
             <div>
                 <h2>Inglés Básico 1</h2>
-                <p>Completado hace 22 semanas</p>
+                <p class="text-advance-1" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse1')">Revisar</button>
         </div>
@@ -228,7 +228,7 @@
         <div class="nivel-2 modulo">
             <div>
                 <h2>Inglés Básico 2</h2>
-                <p>Completado hace 18 semanas</p>
+                <p class="text-advance-2" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse2')">Revisar</button>
         </div>
@@ -245,7 +245,7 @@
         <div class="nivel-3 modulo">
             <div>
                 <h2>Inglés Básico 3</h2>
-                <p>Completado hace 10 semanas</p>
+                <p class="text-advance-3" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse3')">Revisar</button>
         </div>
@@ -262,7 +262,7 @@
         <div class="nivel-4 modulo">
             <div>
                 <h2>Inglés Básico 4</h2>
-                <p>Completado hace 6 semanas</p>
+                <p class="text-advance-4" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse4')">Revisar</button>
         </div>
@@ -279,7 +279,7 @@
         <div class="nivel-5 modulo">
             <div>
                 <h2>Inglés Básico 5</h2>
-                <p>Completado hace 2 semanas</p>
+                <p class="text-advance-5" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse5')">Revisar</button>
         </div>
@@ -297,7 +297,7 @@
         <div class="modulo nivel-6">
             <div>
                 <h2>Inglés Intermedio 1</h2>
-                <p>Completado</p>
+                <p class="text-advance-6" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse6')">Continuar</button>
         </div>
@@ -314,7 +314,7 @@
         <div class="modulo nivel-7">
             <div>
                 <h2>Inglés Intermedio 2</h2>
-                <p>Completado</p>
+                <p class="text-advance-7" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse7')">Continuar</button>
         </div>
@@ -331,7 +331,7 @@
         <div class="modulo nivel-8">
             <div>
                 <h2>Inglés Intermedio 3</h2>
-                <p>En progreso - 45% Completado</p>
+                <p class="text-advance-8" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse8')">Continuar</button>
         </div>
@@ -348,7 +348,7 @@
         <div class="modulo nivel-9">
             <div>
                 <h2>Inglés Intermedio 4</h2>
-                <p>No iniciado</p>
+                <p class="text-advance-9" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse9')">Continuar</button>
         </div>
@@ -364,7 +364,7 @@
         <div class="modulo nivel-10">
             <div>
                 <h2>Inglés Intermedio 5</h2>
-                <p>No iniciado</p>
+                <p class="text-advance-10" ></p>
             </div>
             <button class="boton" onclick="toggleCollapse('collapse10')">Continuar</button>
         </div>
@@ -386,15 +386,15 @@
         <div class="insignias">
             <div class="insignia">
                 <img src="img/medalla.png" alt="Insignia 1">
-                <p>Jugador Activo</p>
+                <p class="text-advance" >Jugador Activo</p>
             </div>
             <div class="insignia">
                 <img src="img/trofeoo.png" alt="Insignia 2">
-                <p>Top 1°</p>
+                <p class="text-advance" >Top 1°</p>
             </div>
             <div class="insignia">
                 <img src="img/medalla.png" alt="Insignia 3">
-                <p>Aydar a otros</p>
+                <p class="text-advance" >Aydar a otros</p>
             </div>
         </div>-->
 
@@ -486,21 +486,31 @@
             data.forEach((nivel) => {
                 const porcentaje = parseFloat(nivel.porcentaje_completado);
                 const idNivel = nivel.id_nivel;
-
+                
                 // Seleccionar el elemento correspondiente al nivel
                 const elementoNivel = document.querySelector(`.nivel-${idNivel}`);
-                
+                const elementoAdvanced = document.querySelector(`.text-advance-${idNivel}`);
                 if (elementoNivel) {
                     // Limpiar clases previas
                     elementoNivel.classList.remove('completado', 'en-progreso', 'no-iniciado');
+                    elementoAdvanced.classList.remove('completado', 'en-progreso', 'no-iniciado');
                     
                     // Asignar clases según el porcentaje
                     if (porcentaje === 100) {
                         elementoNivel.classList.add('completado');
+                        elementoAdvanced.textContent = "Completado";
+                        console.log(porcentaje + "Este esta completo");
+                        console.log(data.id_nivel);
                     } else if (porcentaje > 0) {
                         elementoNivel.classList.add('en-progreso');
+                        elementoAdvanced.textContent = "En proceso";
+                        console.log(porcentaje + "Este esta en proceso xD");
+                        console.log(data.id_nivel);
                     } else {
                         elementoNivel.classList.add('no-iniciado');
+                        elementoAdvanced.textContent = "No se a iniciado";
+                        console.log(porcentaje + "Este ni se a iniciado xD");
+                        console.log(data.id_nivel);
                     }
                 }
             });
