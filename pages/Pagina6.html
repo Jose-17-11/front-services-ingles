@@ -210,18 +210,20 @@
     <div class="progreso-container">
 
         <!-- Módulo 1 -->
-        <div class="nivel-1 modulo">
+         <!-- en estos dos  div se tendran tres posibles clases: no-iniciado en-progreso completado-->
+        <div class="modulo no-iniciado">
             <div>
-                <h2>Inglés Básico 1</h2>
-                <p class="text-advance-1" ></p>
+                <h2></h2>
+                <p></p>
             </div>
+            <!-- En el boton hay dos posibles textos uno que diga:
+              continuar en el caso de que ya hay avance y otro que diga revisar en caso de que no se haya comenzado-->
             <button class="boton" onclick="toggleCollapse('collapse1')">Revisar</button>
         </div>
+        <!-- Cada iterasion se le agregara lo que es el id: collapse${iterador} -->
         <div id="collapse1" class="contenido-colapsable">
-            <h3>Unidades del Módulo</h3>
-            <div class="n1-unidad-1 unidad completado">Unidad 1: Introducción a la gramática básica</div>
-            <div class="n1-unidad-2 unidad completado">Unidad 2: Verbos regulares e irregulares</div>
-            <div class="n1-unidad-3 unidad completado">Unidad 3: Frases cotidianas en inglés</div>
+            <h3>Aqui va a ir el nombre del nivel</h3>
+            <div class="unidad no-iniciado">Aqui iran las sesiones que pertenecen al nivel</div>
         </div>
 
         <!-- Módulo 2 -->
@@ -234,11 +236,11 @@
         </div>
         <div id="collapse2" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
-            <div class="n2-unidad-1 unidad completado">Unidad 1: Los tiempos verbales en presente (presente simple y presente continuo)</div>
-            <div class="n2-unidad-2 unidad completado">Unidad 2: Vocabulario de objetos y lugares comunes</div>
-            <div class="n2-unidad-3 unidad completado">Unidad 3: Pronombres personales y demostrativos</div>
-            <div class="n2-unidad-4 unidad completado">Unidad 4: Preguntas y respuestas simples</div>
-            <div class="n2-unidad-5 unidad completado">Unidad 5: Artículos definidos e indefinidos</div>
+            <div class="unidad-4 unidad completado">Unidad 1: Los tiempos verbales en presente (presente simple y presente continuo)</div>
+            <div class="unidad-5 unidad completado">Unidad 2: Vocabulario de objetos y lugares comunes</div>
+            <div class="unidad-6 unidad completado">Unidad 3: Pronombres personales y demostrativos</div>
+            <div class="unidad-7 unidad completado">Unidad 4: Preguntas y respuestas simples</div>
+            <div class="unidad-8 unidad completado">Unidad 5: Artículos definidos e indefinidos</div>
         </div>
 
         <!-- Módulo 3 -->
@@ -251,11 +253,11 @@
         </div>
         <div id="collapse3" class="nivel-3 contenido-colapsable">
             <h3>Unidades del Módulo</h3>
-            <div class="n3-unidad-1 unidad completado">Unidad 1: Pasado simple y pasado continuo</div>
-            <div class="n3-unidad-2 unidad completado">Unidad 2: Preposiciones de lugar y tiempo</div>
-            <div class="n3-unidad-3 unidad completado">Unidad 3: Adjetivos y su orden en las oraciones</div>
-            <div class="n3-unidad-4 unidad completado">Unidad 4: Vocabulario de actividades cotidianas</div>
-            <div class="n3-unidad-5 unidad completado">Unidad 5: Conjunciones básicas</div>
+            <div class="unidad-9 unidad completado">Unidad 1: Pasado simple y pasado continuo</div>
+            <div class="unidad-10 unidad completado">Unidad 2: Preposiciones de lugar y tiempo</div>
+            <div class="unidad-11 unidad completado">Unidad 3: Adjetivos y su orden en las oraciones</div>
+            <div class="unidad-12 unidad completado">Unidad 4: Vocabulario de actividades cotidianas</div>
+            <div class="unidad-13 unidad completado">Unidad 5: Conjunciones básicas</div>
         </div>
 
         <!-- Módulo 4 -->
@@ -268,11 +270,11 @@
         </div>
         <div id="collapse4" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
-            <div class="n4-unidad-1 unidad completado">Unidad 1: Futuro simple y futuro con "going to"</div>
-            <div class="n4-unidad-2 unidad completado">Unidad 2: Vocabulario de viajes y direcciones</div>
-            <div class="n4-unidad-3 unidad completado">Unidad 3: Uso de "There is" y "There are"</div>
-            <div class="n4-unidad-4 unidad completado">Unidad 4: Comparativos y superlativos</div>
-            <div class="n4-unidad-5 unidad completado">Unidad 5: Adverbios de frecuencia y cantidad</div>
+            <div class="unidad-14 unidad completado">Unidad 1: Futuro simple y futuro con "going to"</div>
+            <div class="unidad-15 unidad completado">Unidad 2: Vocabulario de viajes y direcciones</div>
+            <div class="unidad-16 unidad completado">Unidad 3: Uso de "There is" y "There are"</div>
+            <div class="unidad-17 unidad completado">Unidad 4: Comparativos y superlativos</div>
+            <div class="unidad-18 unidad completado">Unidad 5: Adverbios de frecuencia y cantidad</div>
         </div>
 
         <!-- Módulo 5 -->
@@ -285,11 +287,11 @@
         </div>
         <div id="collapse5" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
-            <div class="n5-unidad-1 unidad completado">Unidad 1: Present perfect</div>
-            <div class="n5-unidad-2 unidad completado">Unidad 2: Vocabulario relacionado con la salud</div>
-            <div class="n5-unidad-3 unidad completado">Unidad 3: Modal verbs básicos</div>
-            <div class="n5-unidad-4 unidad completado">Unidad 4: Formación de oraciones condicionales básicas</div>
-            <div class="n5-unidad-5 unidad completado">Unidad 5: Uso de "must", "have to" y "need to"</div>
+            <div class="unidad-19 unidad completado">Unidad 1: Present perfect</div>
+            <div class="unidad-20 unidad completado">Unidad 2: Vocabulario relacionado con la salud</div>
+            <div class="unidad-21 unidad completado">Unidad 3: Modal verbs básicos</div>
+            <div class="unidad-22 unidad completado">Unidad 4: Formación de oraciones condicionales básicas</div>
+            <div class="unidad-23 unidad completado">Unidad 5: Uso de "must", "have to" y "need to"</div>
         </div>
 
 
@@ -303,11 +305,11 @@
         </div>
         <div id="collapse6" class="contenido-colapsable">
             <h3>Unidades del Módulo</h3>
-            <div class="n6-s1-unidad-1 unidad completado">Unidad 1: Pasado perfecto</div>
-            <div class="n6-s1-unidad-2 unidad completado">Unidad 2: Futuro perfecto y futuro continuo</div>
-            <div class="n6-s1-unidad-3 unidad completado">Unidad 3: Vocabulario relacionado con el trabajo y profesiones</div>
-            <div class="n6-s1-unidad-4 unidad completado">Unidad 4: Frases de cortesía y modales (politeness strategies)</div>
-            <div class="n6-s1-unidad-5 unidad completado">Unidad 5: Expresiones idiomáticas comunes</div>
+            <div class="unidad- unidad completado">Unidad 1: Pasado perfecto</div>
+            <div class="unidad- unidad completado">Unidad 2: Futuro perfecto y futuro continuo</div>
+            <div class="unidad- unidad completado">Unidad 3: Vocabulario relacionado con el trabajo y profesiones</div>
+            <div class="unidad- unidad completado">Unidad 4: Frases de cortesía y modales (politeness strategies)</div>
+            <div class="unidad- unidad completado">Unidad 5: Expresiones idiomáticas comunes</div>
         </div>
 
         <!-- Modulo 2 en completado (verde) -->
@@ -375,36 +377,12 @@
             <div class="n10-s5-unidad-4 unidad no-iniciado">Unidad 4: Negociación y persuasión en inglés</div>
             <div class="n10-s5-unidad-5 unidad no-iniciado">Unidad 5: Preparación para presentaciones y exposiciones</div>
         </div>
-
-
         <!-- Barra de progreso -->
         <div class="barra-progreso">
             <div class="progreso"></div>
         </div>
-<strong class="porcent-barra" >76%</strong>
-        <!-- Insignias 
-        <div class="insignias">
-            <div class="insignia">
-                <img src="img/medalla.png" alt="Insignia 1">
-                <p class="text-advance" >Jugador Activo</p>
-            </div>
-            <div class="insignia">
-                <img src="img/trofeoo.png" alt="Insignia 2">
-                <p class="text-advance" >Top 1°</p>
-            </div>
-            <div class="insignia">
-                <img src="img/medalla.png" alt="Insignia 3">
-                <p class="text-advance" >Aydar a otros</p>
-            </div>
-        </div>-->
-
+        <strong class="porcent-barra" >76%</strong>
     </div>
-<div>l</div>
-
-    <!-- Footer con botón "JUGAR" -->
-    <footer>
-       
-    </footer>
 
     <script>
         function toggleCollapse(id) {
@@ -416,9 +394,9 @@
             }
         }
     </script>
-
+    <!-- Script que obtiene el porcentaje total del progreso -->
     <script>
-            function getCookie(name) {
+        function getCookie(name) {
             const cookies = document.cookie.split(';');
             for (let cookie of cookies) {
                 const [key, value] = cookie.trim().split('=');
@@ -430,8 +408,8 @@
         }
 
         async function getPorcentajeTola() {
-        const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage
-        const userId = getCookie('userId');  // Obtener el userId de las cookies
+        const token = localStorage.getItem('authToken');  
+        const userId = getCookie('userId');
         if (token) {
             const response = await fetch(`http://localhost:3000/user-progreso-total/${userId}`, {
                 method: 'GET',
@@ -443,8 +421,6 @@
             
             if (response.ok) {
                 const data = await response.json();
-                // console.log(data);  // Muestra el objeto completo
-                
                 const porcentaje = parseFloat(data.porcentaje_total);  // Convierte el valor a número
                 if (!isNaN(porcentaje)) {
                     // Aquí actualizamos la barra de progreso
@@ -459,69 +435,61 @@
             }
         } 
     }
-
-    getPorcentajeTola();  // Llama a la función para obtener y mostrar el porcentaje
-
+    getPorcentajeTola();
     </script>
 
+    <!-- Script que obtiene el porcentaje parcial -->
     <script>
-        async function getPorcentajeParcial() {
-    const token = localStorage.getItem('authToken'); // Recuperar el token desde localStorage
-    const userId = getCookie('userId'); // Obtener el userId de las cookies
+        async function MostrarSesionesUsuarioConNivel() {
+        const token = localStorage.getItem('authToken'); 
+        const userId = getCookie('userId'); 
 
-    if (token) {
-        const response = await fetch(`http://localhost:3000/user-progreso-parcial/${userId}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
-
-        if (response.ok) {
-            const data = await response.json(); // Array de datos
-            console.log(data); // Muestra el arreglo completo
-            
-            // Iterar sobre la respuesta y asignar clases dinámicamente
-            data.forEach((nivel) => {
-                const porcentaje = parseFloat(nivel.porcentaje_completado);
-                const idNivel = nivel.id_nivel;
-                
-                // Seleccionar el elemento correspondiente al nivel
-                const elementoNivel = document.querySelector(`.nivel-${idNivel}`);
-                const elementoAdvanced = document.querySelector(`.text-advance-${idNivel}`);
-                if (elementoNivel) {
-                    // Limpiar clases previas
-                    elementoNivel.classList.remove('completado', 'en-progreso', 'no-iniciado');
-                    elementoAdvanced.classList.remove('completado', 'en-progreso', 'no-iniciado');
-                    
-                    // Asignar clases según el porcentaje
-                    if (porcentaje === 100) {
-                        elementoNivel.classList.add('completado');
-                        elementoAdvanced.textContent = "Completado";
-                        console.log(porcentaje + "Este esta completo");
-                        console.log(data.id_nivel);
-                    } else if (porcentaje > 0) {
-                        elementoNivel.classList.add('en-progreso');
-                        elementoAdvanced.textContent = "En proceso";
-                        console.log(porcentaje + "Este esta en proceso xD");
-                        console.log(data.id_nivel);
-                    } else {
-                        elementoNivel.classList.add('no-iniciado');
-                        elementoAdvanced.textContent = "No se a iniciado";
-                        console.log(porcentaje + "Este ni se a iniciado xD");
-                        console.log(data.id_nivel);
-                    }
-                }
+        if (token) {
+            const response = await fetch(`http://localhost:3000/user-sesiones-on/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
             });
-        } else {
-            console.error('Error al obtener el porcentaje parcial');
+
+            if (response.ok) {
+                const data = await response.json(); 
+                console.log(data); 
+                
+                // Iterar sobre la respuesta y asignar clases dinámicamente
+                data.forEach((nivel) => {
+                    const porcentaje = parseFloat(nivel.porcentaje_completado);
+                    const idNivel = nivel.id_nivel;
+                    
+                    // Seleccionar el elemento correspondiente al nivel
+                    const elementoNivel = document.querySelector(`.nivel-${idNivel}`);
+                    const elementoAdvanced = document.querySelector(`.text-advance-${idNivel}`);
+                    if (elementoNivel) {
+                        // Limpiar clases previas
+                        elementoNivel.classList.remove('completado', 'en-progreso', 'no-iniciado');
+                        elementoAdvanced.classList.remove('completado', 'en-progreso', 'no-iniciado');
+                        
+                        // Asignar clases según el porcentaje
+                        if (porcentaje === 100) {
+                            elementoNivel.classList.add('completado');
+                            elementoAdvanced.textContent = "Completado";
+                        } else if (porcentaje > 0) {
+                            elementoNivel.classList.add('en-progreso');
+                            elementoAdvanced.textContent = "En proceso";
+                        } else {
+                            elementoNivel.classList.add('no-iniciado');
+                            elementoAdvanced.textContent = "No se a iniciado";
+                        }
+                    }
+                });
+            } else {
+                console.error('Error al obtener el porcentaje parcial');
+            }
+            }
         }
-    }
-}
-
-getPorcentajeParcial();
-
+        MostrarSesionesUsuarioConNivel();
     </script>
 </body>
 </html>
+<!--  -->

@@ -41,7 +41,7 @@ async function postData(url, data) {
         } else {
             console.log("el userId no se pudo almacenar en las cookies");
         }
-        window.location.href = "Pagina2.html";
+        window.location.href = "./pages/Pagina2.html";
         return result;
     } else {
         // Manejo del error si la respuesta no es exitosa
