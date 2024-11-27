@@ -3,7 +3,7 @@ async function checkToken() {
 
     // Si no hay token, redirige al usuario al login
     if (!token) {
-        window.location.href = "Pagina1.html";
+        window.location.href = "/index.html";
         return;
     }
 
@@ -28,7 +28,7 @@ async function checkToken() {
         // Eliminar el token de localStorage
         localStorage.removeItem('authToken');
         // Redirigir al login
-        window.location.href = "Pagina1.html";
+        window.location.href = "index.html";
     }
 }
 checkToken()
