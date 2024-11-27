@@ -6,5 +6,5 @@ document.getElementById('logout').addEventListener('click', () => {
     localStorage.removeItem('authToken');
 
     // Redirigir al usuario a la página de login
-    window.location.href = '/pages/Pagina1.html';
+    window.location.href = '/index.html';
 });
