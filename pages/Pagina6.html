@@ -433,7 +433,7 @@
         const token = localStorage.getItem('authToken');  // Recuperar el token desde localStorage
         const userId = getCookie('userId');  // Obtener el userId de las cookies
         if (token) {
-            const response = await fetch(`http://localhost:3000/user-progreso-total/${userId}`, {
+            const response = await fetch(`https://api.agencia1711.site/user-progreso-total/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -470,7 +470,7 @@
     const userId = getCookie('userId'); // Obtener el userId de las cookies
 
     if (token) {
-        const response = await fetch(`http://localhost:3000/user-progreso-parcial/${userId}`, {
+        const response = await fetch(`https://api.agencia1711.site/user-progreso-parcial/${userId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

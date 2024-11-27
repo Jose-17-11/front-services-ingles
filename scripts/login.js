@@ -4,7 +4,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     let user = document.getElementById("email").value;
     let pass = document.getElementById("password").value;
-    const response = postData('http://localhost:3000/user', {email: user, password: pass})
+    const response = postData('https://api.agencia1711.site/user', {email: user, password: pass})
     console.log(response);  
 })
 

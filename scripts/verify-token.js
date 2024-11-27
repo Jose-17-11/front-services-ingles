@@ -9,7 +9,7 @@ async function checkToken() {
 
     // Verificar el token en el servidor
     try {
-        const response = await fetch("http://localhost:3000/verificar-token", {
+        const response = await fetch("https://api.agencia1711.site/verificar-token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
