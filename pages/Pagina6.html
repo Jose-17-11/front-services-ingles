@@ -444,6 +444,14 @@
         const token = localStorage.getItem('authToken'); 
         const userId = getCookie('userId'); 
 
+    if (token) {
+        const response = await fetch(`https://api.agencia1711.site/user-progreso-parcial/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
         if (token) {
             const response = await fetch(`https://api.agencia1711.site/user-sesiones-on/${userId}`, {
                 method: 'GET',
@@ -489,7 +497,7 @@
             }
         }
         MostrarSesionesUsuarioConNivel();
+    }
     </script>
 </body>
 </html>
-<!--  -->
